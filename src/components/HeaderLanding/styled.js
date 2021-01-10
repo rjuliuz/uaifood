@@ -41,17 +41,26 @@ export const DivComplete = styled.div`
   width: 49vw;
   height: 100%;
   background-color: #fff;
-  border-top: 1px solid black;        
+  border-top: 1px solid black;
+  max-height: 200px; 
+  overflow-y : scroll;       
 `
 
 export const DivCities = styled.div`
-  border-bottom: 1px solid black;
-  margin: 10px 0;  
+  margin: 10px 30px;
+    
 `
 
 export const CitiesName = styled.p`
   font-size: 24pt;
   font-weight: 300;
   color: #484848;
+
+`
+
+export const CitiesState = styled.p`
+  font-size: 14pt;
+  font-weight: 300;
+  color: #767676;
 
 `

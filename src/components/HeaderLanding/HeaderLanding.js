@@ -7,13 +7,14 @@ import {
     ButtonHeader,
     DivComplete,
     DivCities,
-    CitiesName 
+    CitiesName,
+    CitiesState 
 } from "./styled";
 import { BASE_URL, header } from "../../constants/urls";
 import axios from "axios";
 
 
-const Header = () => {
+const HeaderLanding = () => {
 
 const [data, setData] = useState([]);
 const [queryData, setQueryData] = useState("");
@@ -50,8 +51,8 @@ console.log(data)
         {data.map((cities) => {
           return (
             <DivCities>
-              <CitiesName>{cities.name} - {cities.state_code}</CitiesName>
-              <p>{cities.state_name}</p>
+              <CitiesName>{cities.name}</CitiesName>
+              <CitiesState>Estado: {cities.state_name}</CitiesState>
             </DivCities>
           );
         })}
@@ -60,4 +61,4 @@ console.log(data)
   );
 };
 
-export default Header;
+export default HeaderLanding;
