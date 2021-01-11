@@ -17,23 +17,18 @@ import axios from "axios";
 const HeaderLanding = () => {
 
 const [data, setData] = useState([]);
-const [queryData, setQueryData] = useState("");
+const [input, setInput] = useState("");
+const [display, setDisplay] = useState(false);
 
-	
-const onChangeInput = (event) => {
-  setQueryData(event.target.value)   
-}
 
 useEffect(() => {
   async function getData(){
-    const response = await axios.get(`${BASE_URL}/cities?q=${queryData}`, header)
+    const response = await axios.get(`${BASE_URL}/cities?q=${input}`, header)
     setData(response.data.location_suggestions)
   }
   getData()
   
-},[queryData])
-
-console.log(data)
+},[input])
 
 
   return (
@@ -41,21 +36,26 @@ console.log(data)
       <Paragraph>Descubra os melhores <br/> restaurantes em sua cidade</Paragraph>      
       <DivInput>
         <InputHeader
-          placeholder={'Digita nome de uma cidade'}
-          value={queryData}
-          onChange={onChangeInput}
+          type="text"
+          placeholder={'Digita o nome de uma cidade'}
+          value={input}
+          onChange={(e) => {setInput(e.target.value);setDisplay(true)}}
         />
         <ButtonHeader>BUSCAR</ButtonHeader>
       </DivInput>
-      <DivComplete>
-        {data.map((cities) => {
-          return (
-            <DivCities>
-              <CitiesName>{cities.name}</CitiesName>
-              <CitiesState>Estado: {cities.state_name}</CitiesState>
+      <DivComplete>        
+        {display && (
+        data
+          .map((value) => {
+          return(
+            <DivCities onClick={()=>{setInput(value.name);setDisplay(false)}}>
+              <CitiesName>{value.name}</CitiesName>
+              <CitiesState>{value.state_name}</CitiesState>
             </DivCities>
-          );
-        })}
+          )
+          })
+        ) 
+        }
       </DivComplete>      
     </DivHeader>
   );

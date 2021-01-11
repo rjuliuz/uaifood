@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { BASE_URL, header } from '../../constants/urls'
 
 const Autocomplete = () => {
 
@@ -11,7 +12,7 @@ const Autocomplete = () => {
   useEffect(()=> {
     async function getData(){
 
-      const response = await axios.get(`https://developers.zomato.com/api/v2.1/cities?q=${input}`, {headers:{'user-key': '4af0c22220a353199d2c09be6ced712d'}})
+      const response = await axios.get(`${BASE_URL}/cities?q=${input}`, header)
 
       setData(response.data.location_suggestions)
     }

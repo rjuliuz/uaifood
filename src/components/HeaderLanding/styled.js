@@ -23,7 +23,11 @@ export const DivInput = styled.div`
 
 export const InputHeader = styled.input`
   width: 49vw;
-  height: 50px;    
+  height: 60px;
+  font-size: 24pt;
+  font-weight: 600;
+  color: #767676;
+  padding-left: 30px;   
 `
 
 export const ButtonHeader = styled.button`
@@ -43,12 +47,12 @@ export const DivComplete = styled.div`
   background-color: #fff;
   border-top: 1px solid black;
   max-height: 200px; 
-  overflow-y : scroll;       
+  overflow-y : scroll;
+  padding-left: 30px;        
 `
 
 export const DivCities = styled.div`
-  margin: 10px 30px;
-    
+  padding-top: 10px; 
 `
 
 export const CitiesName = styled.p`
