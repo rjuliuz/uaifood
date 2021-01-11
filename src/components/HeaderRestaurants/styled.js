@@ -6,13 +6,13 @@ export const DivHeader = styled.div`
     display: flex;    
     border: 1px solid black;
     align-items: center;
-    box-shadow: 4px 2px 2px #767676;    
+    box-shadow: 6px 3px 3px #D3D3D3;    
 `
 
 export const LogoHeader = styled.img`
     width: 7%;
     height: auto;
-    margin-left: 8%;
+    margin-left: 5%;
 `
 
 export const InputHeader = styled.input`

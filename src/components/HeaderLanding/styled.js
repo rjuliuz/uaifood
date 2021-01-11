@@ -18,7 +18,8 @@ export const Paragraph = styled.p`
 export const DivInput = styled.div`
   display: flex;
   flex-direction: row;
-  margin-top: 30px;        
+  margin-top: 30px;
+  position: relative;          
 `
 
 export const InputHeader = styled.input`
@@ -27,12 +28,14 @@ export const InputHeader = styled.input`
   font-size: 24pt;
   font-weight: 600;
   color: #767676;
-  padding-left: 30px;   
+  padding-left: 60px;
+  display: flex;
+  justify-content: flex-start;   
 `
 
 export const ButtonHeader = styled.button`
   width: 300px;
-  height: 50px;    
+  height: 60px;    
   margin-left: 30px;
   font-size: 24pt;
   font-weight: 600;
@@ -48,7 +51,7 @@ export const DivComplete = styled.div`
   border-top: 1px solid black;
   max-height: 200px; 
   overflow-y : scroll;
-  padding-left: 30px;        
+  padding-left: 60px;        
 `
 
 export const DivCities = styled.div`
@@ -59,12 +62,19 @@ export const CitiesName = styled.p`
   font-size: 24pt;
   font-weight: 300;
   color: #484848;
-
 `
 
 export const CitiesState = styled.p`
   font-size: 14pt;
   font-weight: 300;
   color: #767676;
+`
 
+export const SpanMark = styled.span`  
+  font-size: 30pt;
+  color: #484848;
+  font-weight: 300;  
+  margin: auto 10px 0 auto;  
+  position: absolute;
+  left: 15px;   
 `
