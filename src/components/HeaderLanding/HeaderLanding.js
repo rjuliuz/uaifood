@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { 
     DivHeader,     
     Paragraph,
@@ -13,29 +13,18 @@ import {
 } from "./styled";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import { BASE_URL, header } from "../../constants/urls";
-import axios from "axios";
-
+import GlobalStateContext from "../../global/GlobalStateContext";
 
 const HeaderLanding = () => {
 
-const [data, setData] = useState([]);
-const [input, setInput] = useState("");
+const { states, setters, requests } = useContext(GlobalStateContext);
 const [display, setDisplay] = useState(false);
 
 
 useEffect(() => {
-  async function getData(){
-    const response = await axios.get(`${BASE_URL}/cities?q=${input}`, header)
-    setData(response.data.location_suggestions)
-  }
-  getData()
+  requests.getData();
+},[states.input]);
 
-  
-  
-},[input])
-
-  console.log(data)
   return (
     <DivHeader>              
       <Paragraph>Descubra os melhores <br/> restaurantes em sua cidade</Paragraph>      
@@ -43,18 +32,18 @@ useEffect(() => {
         <SpanMark><FontAwesomeIcon icon={faMapMarkerAlt} /></SpanMark>
         <InputHeader
           type="text"          
-          value={input}
-          onChange={(e) => {setInput(e.target.value);setDisplay(true)}}
+          value={states.input}
+          onChange={(e) => {setters.setInput(e.target.value);setDisplay(true)}}
         />
         
         <ButtonHeader>BUSCAR</ButtonHeader>
       </DivInput>
       <DivComplete>        
         {display && (
-        data
+        states.cities
           .map((value) => {
           return(
-            <DivCities onClick={()=>{setInput(value.name);setDisplay(false)}}>
+            <DivCities onClick={()=>{setters.setInput(value.name);setDisplay(false)}}>
               <CitiesName>{value.name}</CitiesName>
               <CitiesState>{value.state_name}</CitiesState>
             </DivCities>
