@@ -2,13 +2,12 @@ import React, { useState, createContext, useContext } from "react";
 import axios from "axios";
 import { BASE_URL, header } from "../constants/urls";
 
-////criando um context expecifico eiii.... vou ir pra casa.. fechar aqui e subir pro git... segura uns 20 min.deu horáriofechou 
+//criando um contexto expecifico
 const RequestContext = createContext()
 
+//criando a funço responsavel por prover os dados
 export const RequestProvider = ({children}) =>{
 
-    
-    
     const [input, setInput] = useState("");
     const [data, setData] = useState([]);
 
@@ -19,12 +18,10 @@ export const RequestProvider = ({children}) =>{
       }
 
       axios
-        .get((`${BASE_URL}/cities?q=${input}`, header))
+        .get(`${BASE_URL}/cities?q=${input}`, header)
         .then((response) => setData(response.data.location_suggestions))
         .catch((error) => console.log(error.message));
-    };
-
-   
+    };   
 
     return(
         <RequestContext.Provider value={{ 
@@ -32,18 +29,16 @@ export const RequestProvider = ({children}) =>{
           setInput,
           data,
           setData,
-          getData,
+          getData          
           }}>
-
+            {children}
         </RequestContext.Provider>
     )
 }
 
-
+//hooks para chamar o context
 export default function useRequest(){
   const request = useContext(RequestContext)
   const {input, setInput, data, setData, getData} = request
   return {input, setInput, data, setData, getData}
 }
-
-   

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { 
     DivHeader,     
     Paragraph,
@@ -13,18 +13,21 @@ import {
 } from "./styled";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import GlobalStateContext from "../../global/GlobalStateContext";
+import useRequest from '../../context/GlobalState'
 
 const HeaderLanding = () => {
 
-const { states, setters, requests } = useContext(GlobalStateContext);
-const [display, setDisplay] = useState(false);
+  const {setInput, data, getData, input} = useRequest()
 
+const [display, setDisplay] = useState(false);
+//testeaee
 
 useEffect(() => {
-  requests.getData();
-},[states.input]);
+  getData()
+},[input]);
 
+
+console.log(input)
   return (
     <DivHeader>              
       <Paragraph>Descubra os melhores <br/> restaurantes em sua cidade</Paragraph>      
@@ -32,18 +35,18 @@ useEffect(() => {
         <SpanMark><FontAwesomeIcon icon={faMapMarkerAlt} /></SpanMark>
         <InputHeader
           type="text"          
-          value={states.input}
-          onChange={(e) => {setters.setInput(e.target.value);setDisplay(true)}}
+          value={input}
+          onChange={(e) => {setInput(e.target.value);setDisplay(true)}}
         />
         
         <ButtonHeader>BUSCAR</ButtonHeader>
       </DivInput>
       <DivComplete>        
         {display && (
-        states.cities
+        data
           .map((value) => {
           return(
-            <DivCities onClick={()=>{setters.setInput(value.name);setDisplay(false)}}>
+            <DivCities onClick={()=>{setInput(value.name);setDisplay(false)}}>
               <CitiesName>{value.name}</CitiesName>
               <CitiesState>{value.state_name}</CitiesState>
             </DivCities>
