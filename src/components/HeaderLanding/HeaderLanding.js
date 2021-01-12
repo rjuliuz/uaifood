@@ -13,19 +13,19 @@ import {
 } from "./styled";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import useRequest from '../../context/GlobalState'
+import useRequest from '../../context/GlobalState';
+import { useHistory } from "react-router-dom";
+import { goToRestaurants } from "../../routes/coordinator";
 
 const HeaderLanding = () => {
 
-  const {setInput, data, getData, input} = useRequest()
-
+const history = useHistory();
+const {setInput, data, getData, input} = useRequest()
 const [display, setDisplay] = useState(false);
-//testeaee
 
 useEffect(() => {
   getData()
 },[input]);
-
 
 console.log(input)
   return (
@@ -37,9 +37,8 @@ console.log(input)
           type="text"          
           value={input}
           onChange={(e) => {setInput(e.target.value);setDisplay(true)}}
-        />
-        
-        <ButtonHeader>BUSCAR</ButtonHeader>
+        />        
+        <ButtonHeader onClick={() => goToRestaurants(history)}>BUSCAR</ButtonHeader>
       </DivInput>
       <DivComplete>        
         {display && (
