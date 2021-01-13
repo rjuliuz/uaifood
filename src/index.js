@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { RequestProvider } from './context/GlobalState'
+import { RequestProvider } from './context/GlobalStateCities'
 
 ReactDOM.render(
   <React.StrictMode>

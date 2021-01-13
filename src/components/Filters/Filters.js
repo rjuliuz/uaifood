@@ -19,7 +19,7 @@ const Filters = () => {
         <DivFilters>
             <TitleFilters>NOTA</TitleFilters>
             <label>
-              <InputFilter type="checkbox"               
+              <InputFilter type="checkbox"              
               />
               <SpanStars>{element}</SpanStars>
             </label><br/>

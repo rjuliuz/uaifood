@@ -13,21 +13,21 @@ import {
 } from "./styled";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import useRequest from '../../context/GlobalState';
+import useRequest from '../../context/GlobalStateCities';
 import { useHistory } from "react-router-dom";
 import { goToRestaurants } from "../../routes/coordinator";
 
 const HeaderLanding = () => {
 
 const history = useHistory();
-const {setInput, data, getData, input} = useRequest()
+const {setInput, data, getData, input, citieId, setCitiesId} = useRequest()
 const [display, setDisplay] = useState(false);
 
-useEffect(() => {
-  getData()
-},[input]);
+  useEffect(() => {
+    getData()
+  },[input]);
 
-console.log(input)
+
   return (
     <DivHeader>              
       <Paragraph>Descubra os melhores <br/> restaurantes em sua cidade</Paragraph>      
@@ -45,14 +45,12 @@ console.log(input)
         data
           .map((value) => {
           return(
-            <DivCities onClick={()=>{setInput(value.name);setDisplay(false)}}>
+            <DivCities onClick={()=>{setCitiesId(value.id);setInput(value.name);setDisplay(false)}}>
               <CitiesName>{value.name}</CitiesName>
               <CitiesState>{value.state_name}</CitiesState>
             </DivCities>
-          )
-          })
-        ) 
-        }
+          )})
+        )}
       </DivComplete>      
     </DivHeader>
   );

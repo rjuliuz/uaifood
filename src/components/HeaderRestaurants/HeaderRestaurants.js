@@ -5,7 +5,7 @@ import { DivHeader,
        InputHeader,
        ButtonHeader
     } from "./styled";
-import useRequest from '../../context/GlobalState';
+import useRequest from '../../context/GlobalStateCities';
 
 const HeaderRestaurants = () => {
 
@@ -19,7 +19,7 @@ const HeaderRestaurants = () => {
 
   return (
     <DivHeader>
-        <LogoHeader src={logoRed} />
+        <LogoHeader src={logoRed}  />
         <InputHeader 
           type="text"          
           value={input}
