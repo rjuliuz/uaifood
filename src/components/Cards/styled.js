@@ -1,6 +1,4 @@
 import styled from "styled-components"
-import FotoRest from "../../imgs/rest.jpg";
-
 
 export const DivMain = styled.div`
   display: flex;

@@ -55,6 +55,4 @@ const HeaderRestaurants = () => {
   );
 };
 
-//onde ta pra setar a im
-
 export default HeaderRestaurants;

@@ -8,18 +8,12 @@ import { TitleFilters,
         from "./styled";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
-import useRequest from '../../context/GlobalStateCities';
-import useFilter from '../../context/GlobalFilterData'
-
-
+import useFilter from '../../context/GlobalFilterData';
 
 const Filters = () => {
 
-  const { citieId } = useRequest();
   const { setFilterData } = useFilter();
-
-  const element = <FontAwesomeIcon icon={faStar} />  
-  const [typeId, setTypeId] = useState ("")  
+  const element = <FontAwesomeIcon icon={faStar} />   
   const [arabian, setArabian] = useState()
   const [brazilian, setBrazilian] = useState()
   const [chinese, setChinese] = useState()
@@ -39,9 +33,6 @@ const Filters = () => {
   const [mexicanCheck, setMexicanCheck] = useState(true)
   const [peruvianCheck, setPeruvianCheck] = useState(true) 
   const [data, setData] = useState([]) 
-
-  
-
 
   useEffect(() => {
     async function getData () {
@@ -69,8 +60,6 @@ const Filters = () => {
       fun(null)
     }                 
   } 
-
-  console.log(data)
 
   return (
     <DivContainer>

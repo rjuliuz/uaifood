@@ -20,9 +20,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import generic from '../../assets/generic.svg'
 
-
-
-
 const Cards = () => {
 
   const { data, setData, citieId } = useRequest();
@@ -41,8 +38,7 @@ const Cards = () => {
       };
     getRestaurants()
   },[citieId, filterData]);
-
-  console.log(filterData)
+  
   const restaurantsList = restaurants.map((value) => {
     return (
       <DivContainer key={value.id}>
@@ -60,9 +56,7 @@ const Cards = () => {
           </DivButtons>
       </DivContainer>
     )    
-  })
-  
-  console.log(restaurants)
+  })  
   
   return (
     <DivMain>      
@@ -72,6 +66,4 @@ const Cards = () => {
   );
 };
 
-
-//faz uma chamada pra um restalrante q n tem link de image onde?
 export default Cards;

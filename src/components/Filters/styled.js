@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const DivContainer = styled.div`
   width: 17%;
   height: 830px;
