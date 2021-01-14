@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const DivContainer = styled.div`
   width: 17%;
-  height: 100%;
+  height: 830px;
   border: 1px solid black;
   margin: 20px 50px;  
   border: 3px solid #D3D3D3;

@@ -10,5 +10,5 @@ export const DivContainer = styled.div`
 export const DivMain = styled.div`
     display: flex;
     flex-direction: row;
-    
+    margin-top: 10px;    
 `
